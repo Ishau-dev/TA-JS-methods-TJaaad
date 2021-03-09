@@ -34,6 +34,8 @@ for(str of strings){
     console.log(str)
   }
   }
+
+  strings.filter(ele=>{ele.includes("is")})
 // - Check if all the numbers in numbers array are divisible by three use array method (every)
 numbers.every(num=>{return num%3==0;});
 // -  Sort Array from smallest to largest
@@ -48,12 +50,7 @@ for(let i=1;i<numbers.length;i++){
 }
 console.log(max);
 // - Find longest string in strings
-let maxStr= strings[0].length;
-for(let i=1;i<strings.length;i++){
-  if(strings[i].length>maxStr);{
-  maxStr=strings[i].length}
-}
-console.log(maxStr);
+let longest= [...strings].sort((a,b) =>{a.length - b.length}).pop();
 // - Find all the even numbers
 numbers.forEach((num)=>{ if(num%2==0){console.log(num)}})
 // - Find all the odd numbers
@@ -69,12 +66,12 @@ let num=numbers.join(' ')
 num.replace(12,1221);
 num.replace(18,1881)
 // - Replace words in strings array with the length of the word
-let str=strings.join()
-for(i=0;i<str.length;i++){
-  str.replace(str[i],str[i].length)
-}
+let numstr=strings.map(str=>{str.length});
 // - Find the sum of the length of words using above question
-
+numstr.reduce((acc,cv)=>{
+  acc+=cv;
+  return acc
+},0)
 // - Customers Array
 var customers = [
   { firstname: 'Joe', lastname: 'Blogs' },
@@ -91,13 +88,15 @@ for(cus of customers){
   }
 }
 // - Create new array with only first name
-for(cus of customers){
-  let final=[]
-  let final=cus.firstname.push();
-    console.log(final);
-  }
+let firstnameCust= customers.map(cust=> cust.firstname);
 // - Create new array with all the full names (ex: "Joe Blogs")
-
+let  fullName= customers.map(cust => `${cust.firstname} ${cust.lastname}`);
 // - Sort the array created above alphabetically
-
+[...fullName].sort();
 // - Create a new array that contains only user who has at least one vowel in the firstname.
+let vowelCust= customers.filter((cust) => {
+  if( cust.firstname.toLowerCase.includes("a") || cust.firstname.toLowerCase.includes("e") || cust.firstname.toLowerCase.includes("i") || cust.firstname.toLowerCase.includes("o") || cust.firstname.toLowerCase.includes("u")){
+  return true;
+}else {
+  return false
+}});
