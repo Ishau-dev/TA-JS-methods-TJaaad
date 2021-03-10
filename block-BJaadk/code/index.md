@@ -43,7 +43,7 @@ function addTwo(num) {
   return num + 2;
 }
 let doubleNumbers = numbers.map(addTwo);
-```
+```s
 
 ```js
 let numbers = [100, 200, 33, 45, 65, 76, 51];
