@@ -89,13 +89,21 @@ let hMaleg=[...maleGrade].sort((a,b) => { return a - b }).pop()
 // Find the highest grade in female
 let hFemaleg=[...femaleGrade].sort((a,b) => { return a - b }).pop()
 // Find the highest grade for people whose name starts with 'J' or 'P'
-
+let startsJorP= persons.filter(nam => {
+   if(nam.name.startsWith('P') || nam.name.startsWith('J')){
+    return true
+  };
+  
+});
+let jorpGrade= startsJorP.map(peo => peo.grade);
+[...jorpGrade].sort((a,b) => a - b).pop()
 // Sort the peopleGrade in ascending order and log the value of peopleGrade. Notice did the elements of peopleGrade got changed?
-
+peopleGrade.sort((a,b)=> a - b)
 // Sort the peopleGrade in descending order
-
+peopleGrade.sort((a,b)=> b - a)
 // Sort the peopleGrade in descending order this time you have to make sure you don't mutate the original array
-
+let xx=[...peopleGrade].sort((a,b)=> b - a)
 // Sort the array peopelName in ascending `ABCD..Za....z`
-
+peopleName.sort()
 // Sort the array peopelName in ascending `ABCD..Za....z`. Make sure not to mutate the array
+let xr=[...peopleName].sort()
