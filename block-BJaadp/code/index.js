@@ -16,22 +16,16 @@ let persons = [
 // NOTE: Use reduce method whereever you can to solve this exercise:
 
 // Find the average grade
-let personsGrade= persons.map(grade=>{return grade.grade});
-let avgGrade= personsGrade.reduce((acc,val)=>{ return acc+=val},0)/personsGrade.length;
+// let personsGrade= persons.map(grade=>{return grade.grade});
+// let avgGrade= personsGrade.reduce((acc,val)=>{ return acc+=val},0)/personsGrade.length;
+let personsGrade= persons.reduce((acc,val)=>{
+  return  acc + val.grade
+},0)
+console.log(personsGrade/persons.length)
 // Find the average grade of male
-let malePerson= persons.filter(grade=>{
-  if(grade.sex== 'M'){
-    return persons}
-  });
-let maleGrade= malePerson.map(grade=>{return grade.grade});
-let maleAvgGrade= maleGrade.reduce((acc,val)=>{ return acc+=val},0)/maleGrade.length;
+ persons.filter(peo => peo.sex === "M").reduce((acc, cv)=>{return acc + cv.grade;},0)/persons.length;
 // Find the average grade of female
-let femalePerson= persons.filter(grade=>{
-  if(grade.sex== 'F'){
-    return persons}
-  });
-let femaleGrade= femalePerson.map(grade=>{return grade.grade});
-let femaleAvgGrade= femaleGrade.reduce((acc,val)=>{ return acc+=val},0)/femaleGrade.length;
+let femalePerson=  persons.filter(peo => peo.sex === "F").reduce((acc, cv)=>{return acc + cv.grade;},0)/persons.length;
 // Find the highest grade
 personsGrade.sort((a,b)=> a - b).pop();
 // Find the highest grade in male
@@ -93,7 +87,7 @@ const data = [
   [7, 8, 9],
   [10, 11, 12],
 ];
-data.reduce((a,b)=> {return a.concat(b)})
+data.reduce((a,b)=> {return a.concat(b)}, [])
 // Using reduce flat data array
 
 const dataTwo = [
@@ -107,7 +101,7 @@ const dataTwo = [
 data.reduce((a,b)=> {
   let firstarr= a.concat(b)
   return firstarr.flat()
-})
+});
 /*
 
 Create these functions which accepts a number value and returns a number value:
@@ -117,16 +111,22 @@ Create these functions which accepts a number value and returns a number value:
   - `triple` triples the input 
   - `half` converts the value to half and return the integer value not decimal (use Math.round(21.5) => 21)
 */
-let pipe= (val)=>{
-    function increment(){
-      return val + 1;
-      function double(){
-        return val + 2;
-        function triple(){
-          return val + 3;}
-      }
-    }
+
+function increment(num){
+ return num + 1;
 }
+function double(num){
+  return num + 2;
+ }
+ function decrement(num){
+  return num - 1;
+ }
+ function triple(num){
+   return num * 3;
+  }
+function half(num){
+  return Math.round(num/2);
+} 
 let pipeline = [
   increment,
   double,
@@ -151,7 +151,10 @@ EXAMPLE:
 
   ...
 */
-
+pipeline.reduce((acc,cv)=>{
+  acc= cv(acc);
+  return acc;
+},3)
 let pipeline2 = [
   increment,
   half,
@@ -167,3 +170,7 @@ let pipeline2 = [
 ];
 
 // Find the output using pipeline2 the initial value if 8
+pipeline2.reduce((acc,cv)=>{
+  acc= cv(acc);
+  return acc;
+},3)
