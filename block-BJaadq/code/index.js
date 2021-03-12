@@ -2,45 +2,71 @@
 
 function countAllPeople() {
   // your code goes here
-  let allPeople=[...got.houses].map(people => {return people.people});
-  console.log(allPeople.length);
+  total=0;
+  got.houses.forEach(house=> 
+    total=total+house.people.length
+    );
+    return total;
 }
 
 function peopleByHouses() {
   // your code goes here
-  for(house of got.houses){
-    console.log(`The total number of people in house ${house.name} is ${house.people.length}`)
-  }
-
+ //{Arryns: 1, Baratheons: 6, Dothrakis: 1, Freys: 1, Greyjoys: 3, Lannisters: 4,Redwyne: 1,Starks: 8,Targaryens: 2,Tullys: 4,Tyrells: 2}
+ let final={}; 
+ got.houses.forEach(house => 
+  final[house.name] = house.people.length
+  );
+  return final;
 }
 
 function everyone() {
   // your code goes here
-  let allName=[...got.houses].map(house => {return house.name});
-  console.log(allName);
+  //["Eddard "Ned" Stark", "Benjen Stark", "Robb Stark", "Sansa Stark", "Arya Stark", "Brandon "Bran" Stark", "Rickon Stark", "Jon Snow", "Tywin Lannister", "Tyrion Lannister", "Jaime Lannister", "Queen Cersei (Lannister) Baratheon", "King Robert Baratheon", "Stannis Baratheon", "Renly Baratheon", "Joffrey Baratheon", "Tommen Baratheon", "Myrcella Baratheon", "Daenerys Targaryen", "Viserys Targaryen", "Balon Greyjoy", "Theon Greyjoy", "Yara Greyjoy", "Margaery (Tyrell) Baratheon", "Loras Tyrell", "Catelyn (Tully) Stark", "Lysa (Tully) Arryn", "Edmure Tully", "Brynden Tully", "Olenna (Redwyne) Tyrell", "Walder Frey", "Jon Arryn", "Khal Drogo"]
+  let final = [];
+   got.houses.forEach(house=> {
+    let peopleName= house.people.map(pe => pe.name);
+    final = final.concat(peopleName);
+    });
+    
+    return final
 }
 
 function nameWithS() {
   // your code goes here
-  allName.filter(name => { return name.startsWith('S')})
+let peopNames= everyone();
+return peopNames.filter(name => name.toLowerCase().includes('s'))
 }
 
 function nameWithA() {
   // your code goes here
-  allName.filter(name => { return name.startsWith('A')})
+  let peopNames= everyone();
+  return peopNames.filter(name => name.toLowerCase().includes('a'))
+  
 }
 
 function surnameWithS() {
   // your code goes here
-  
-}
+  let peopNames= everyone();
+  return peopNames.filter(name => name.split(' ')[1].toLowerCase().includes('s'))
+  }
+
+
 
 function surnameWithA() {
   // your code goes here
+  let peopNames= everyone();
+  return peopNames.filter(name => name.split(' ')[1].toLowerCase().includes('a'))
+  
 }
 
 function peopleNameOfAllHouses() {
   // your code goes here
+  // {Arryns: ["Jon Arryn"], Baratheons: ["Robert Baratheon", "Stannis Baratheon", "Renly Baratheon", "Joffrey Baratheon", "Tommen Baratheon", "Myrcella Baratheon"], Dothrakis: ["Khal Drogo"], Freys: ["Walder Frey"], Greyjoys: ["Balon Greyjoy", "Theon Greyjoy", "Yara Greyjoy"], Lannisters: ["Tywin Lannister", "Tyrion Lannister", "Jaime Lannister", "Cersei Baratheon"], Redwyne: ["Olenna Tyrell"], Starks: ["Eddard Stark", "Benjen Stark", "Robb Stark", "Sansa Stark", "Arya Stark", "Brandon Stark", "Rickon Stark", "Jon Snow"], Targaryens: ["Daenerys Targaryen", "Viserys Targaryen"], Tullys: ["Catelyn Stark", "Lysa Arryn", "Edmure Tully", "Brynden Tully"], Tyrells: ["Margaery Baratheon", "Loras Tyrell"]}
+  let final= {};
+  got.houses.forEach(house => {
+    final[house.name]= house.people.map(peo => peo.name);
+  });
+  return final;
 }
 
 // Testing your result after writing your function
