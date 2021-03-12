@@ -2,26 +2,37 @@
 
 function countAllPeople() {
   // your code goes here
+  let allPeople=[...got.houses].map(people => {return people.people});
+  console.log(allPeople.length);
 }
 
 function peopleByHouses() {
   // your code goes here
+  for(house of got.houses){
+    console.log(`The total number of people in house ${house.name} is ${house.people.length}`)
+  }
+
 }
 
 function everyone() {
   // your code goes here
+  let allName=[...got.houses].map(house => {return house.name});
+  console.log(allName);
 }
 
 function nameWithS() {
   // your code goes here
+  allName.filter(name => { return name.startsWith('S')})
 }
 
 function nameWithA() {
   // your code goes here
+  allName.filter(name => { return name.startsWith('A')})
 }
 
 function surnameWithS() {
   // your code goes here
+  
 }
 
 function surnameWithA() {
