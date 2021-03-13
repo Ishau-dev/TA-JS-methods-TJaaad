@@ -2,39 +2,93 @@
 
 function countAllPeople() {
   // your code goes here
- let total=0;
-  got.houses.reduce((acc,cv)=>{
-       total= total + cv.people.length;
+ 
+  let total= got.houses.reduce((acc,cv)=>{
+      return acc= acc +cv.people.length;
   },0);
   return total;
 }
 
 function peopleByHouses() {
   // your code goes here
+  return got.houses.reduce((acc, house)=>{
+     acc[house.name] = house.people.length;
+     return acc;
+  }, {});
 }
 
 function everyone() {
   // your code goes here
+
+  return got.houses.reduce((acc,house) =>{
+    acc= acc.concat(house.people.map(pe => pe.name));
+    return acc;
+  },[]);
 }
 
 function nameWithS() {
   // your code goes here
-}
+  
+    // your code goes here
+  
+    return got.houses.reduce((acc,house) =>{
+      acc= acc.concat(house.people.map(pe => pe.name)
+      .filter(name => name.toLowerCase().includes('s')));
+      return acc;
+    },[]);
+  }
+
 
 function nameWithA() {
   // your code goes here
-}
+  
+    // your code goes here
+    
+      // your code goes here
+    
+      return got.houses.reduce((acc,house) =>{
+        acc= acc.concat(house.people.map(pe => pe.name)
+        .filter(name => name.toLowerCase().includes('a')));
+        return acc;
+      },[]);
+    }
 
 function surnameWithS() {
   // your code goes here
+  
+    // your code goes here
+    
+      // your code goes here
+    
+      return got.houses.reduce((acc,house) =>{
+        acc= acc.concat(house.people.map(pe => pe.name)
+        .filter(name => name.split(' ')[1].toLowerCase().includes('s')));
+        return acc;
+      },[]);
 }
 
 function surnameWithA() {
   // your code goes here
+  
+    // your code goes here
+    
+      // your code goes here
+      
+        // your code goes here
+      
+        return got.houses.reduce((acc,house) =>{
+          acc= acc.concat(house.people.map(pe => pe.name)
+          .filter(name => name.split(' ')[1].toLowerCase().includes('a')));
+          return acc;
+        },[]);
 }
 
 function peopleNameOfAllHouses() {
   // your code goes here
+  return got.houses.reduce((acc,house)=>{
+    acc[house.name]= house.people.map(pe =>  pe.name);
+    return acc;
+  },{});
 }
 
 // Testing your result after writing your function
